@@ -14,7 +14,30 @@
 </head>
 
 <body>
-  <app-root>Loading...</app-root>
+  <!-- Menu Bar -->
+  <div class="ui menu">
+    <div class="ui container">
+      <a href="#" class="header item">
+        <img class="logo" src="assets/images/ng-book-2-minibook.png"> ng-book 2
+      </a>
+      <div class="header item borderless">
+        <h1 class="ui header">
+          Angular 2 Simple Reddit
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui main text container">
+    <reddit>
+      <div class="ui segment" style="height: 100%; border-radius:0">
+        <div class="ui active inverted dimmer">
+          <div class="ui text large loader">Loading</div>
+        </div>
+      </div>
+    </reddit>
+  </div>
+
 </body>
 
 </html>
