@@ -20,6 +20,7 @@ export class Article{
 
   domain():string{
     try{
+      //获取url的域名
       const link = this.link.split('//')[1];
       return link.split('/')[0];
     }catch(error){

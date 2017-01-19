@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Article } from './reddis-article/article';
+import { Article } from './reddit-article/article';
 
 @Component({
   selector: 'reddit',

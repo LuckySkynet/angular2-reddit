@@ -3,14 +3,14 @@ import { Article } from './article';
 import { AppComponent } from '../app.component';
 
 @Component({
-  selector: 'reddis-article',
+  selector: 'reddit-article',
   host: {
     class: 'row'
   },
-  templateUrl: './reddis-article.component.html',
-  styleUrls: ['./reddis-article.component.css']
+  templateUrl: './reddit-article.component.html',
+  styleUrls: ['./reddit-article.component.css']
 })
-export class ReddisArticleComponent implements OnInit {
+export class RedditArticleComponent implements OnInit {
 
   @Input()
   article: Article;

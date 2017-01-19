@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ReddisArticleComponent } from './reddis-article/reddis-article.component';
+import { RedditArticleComponent } from './reddit-article/reddit-article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReddisArticleComponent
+    RedditArticleComponent
   ],
   imports: [
     BrowserModule,
