@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Host, forwardRef, Inject } from '@angular/core';
 import { Article } from './article';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'reddis-article',
@@ -14,18 +15,28 @@ export class ReddisArticleComponent implements OnInit {
   @Input()
   article: Article;
 
-  constructor() {
+  articles: Article[];
+
+  constructor( @Host() @Inject(forwardRef(() => AppComponent)) app: AppComponent ) {
+    this.articles = app.articles;
   }
 
   ngOnInit() {
   }
 
-  voteUp(){
+  voteUp() {
     this.article.voteUp();
   }
 
-  voteDown(){
+  voteDown() {
     this.article.voteDown()
+  }
+
+  removeArticle(article: Article) {
+    const index = this.articles.indexOf(article);
+    if (index > -1) {
+      this.articles.splice(index, 1);
+    }
   }
 
 }

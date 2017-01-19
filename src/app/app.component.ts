@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Article } from './reddis-article/article';
 
 @Component({
@@ -26,14 +26,6 @@ export class AppComponent {
 
   sortedArticles(): Article[] {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes)
-  }
-
-  @Output()
-  removeArticle(article: Article): void {
-    const index = this.articles.indexOf(article);
-    if (index > -1) {
-      this.articles.splice(index, 1);
-    }
   }
 
 }

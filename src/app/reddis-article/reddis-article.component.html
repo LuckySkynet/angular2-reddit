@@ -12,6 +12,9 @@
   <a href="{{article.link}}" class="ui large header">
     {{article.title}}
   </a>
+  <button class="ui mini right floated icon button" (click)="removeArticle(article)">
+    <i class="remove icon"></i>
+  </button>
   <div class="sub header">({{ article.domain() }})</div>
   <ul class="ui big horizontal list voters">
     <li class="item">
@@ -25,7 +28,4 @@
       </a>
     </li>
   </ul>
-  <button class="delete" (click)="removeArticle(article); $event.stopPropagation()">
-	x
-  </button>
 </div>
