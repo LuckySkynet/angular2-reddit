@@ -30,11 +30,38 @@ export class AppComponent {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes)
   }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.buildForm();
+  }
+
+  buildForm() {
+    const regExp: string = '((https|http)\:\/\/) ((([0-9]{1,3}\.){3}[0-9]{1,3}) | (([0-9a-z]+\.)*)) ([a-z]{2,6}) (:[0-9]{1,4})? (\/[a-z]+)*';
     this.articleForm = this.fb.group({
-      'titleControl':['',Validators.compose([Validators.required,Validators.minLength(4)])],
-      'linkControl':['',Validators.compose([Validators.required,Validators.minLength(4)])]
+      'title': [this.articles.forEach(article => article.title), Validators.compose([
+        Validators.required,
+        Validators.minLength(4)]
+      )],
+      'link': [this.articles.forEach(article => article.link), Validators.compose([
+        Validators.required,
+        Validators.pattern(regExp)]
+      )]
     })
+  }
+
+  validationMessages = {
+    'title': {
+      'required': 'title is required.',
+      'minlength': 'title must be at least 4 characters long.',
+    },
+    'link': {
+      'required': 'link is required.',
+      'pattern': 'link must be a valid URL'
+    }
+  };
+
+  formError = {
+    'title':'',
+    'link':''
   }
 
 }
