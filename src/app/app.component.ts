@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Article } from './reddit-article/article';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'reddit',
@@ -8,9 +9,10 @@ import { Article } from './reddit-article/article';
 })
 export class AppComponent {
 
+  articleForm: FormGroup;
   articles: Article[];
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     this.articles = [
       new Article('Angular 2', 'http://angular.io', 3),
       new Article('Fullstack', 'http://fullstack.io', 2),
@@ -26,6 +28,13 @@ export class AppComponent {
 
   sortedArticles(): Article[] {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes)
+  }
+
+  ngOnInit(){
+    this.articleForm = this.fb.group({
+      'titleControl':['',Validators.compose([Validators.required,Validators.minLength(4)])],
+      'linkControl':['',Validators.compose([Validators.required,Validators.minLength(4)])]
+    })
   }
 
 }
