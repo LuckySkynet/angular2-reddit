@@ -1,19 +1,21 @@
-<form action="" class="ui large form segment" [formGroup]="articleForm">
+<form action="" class="ui large form segment" [formGroup]="articleForm" *ngIf="active" (ngSubmit)="addArticle()">
   <h3 class="ui header">Add a link</h3>
   <div class="field">
     <label for="title">Title:</label>
-    <input type="text" name="title" #newtitle>
-    <div class="ui error message" *ngIf="!newtitle.valid">
-      <div class="content">
-        {{validationMessages.title | json}}
-      </div>
+    <input type="text" formControlName="title">
+    <!--ui.form 不支持error.message类-->
+    <div class="ui negative message" *ngIf="formErrors.title">
+      <strong>{{formErrors.title}}</strong>
     </div>
   </div>
   <div class="field">
     <label for="link">Link:</label>
-    <input type="text" name="link" #newlink>
+    <input type="text" formControlName="link">
+    <div class="prompt label" *ngIf="formErrors.link">
+      <strong>{{formErrors.link}}</strong>
+    </div>
   </div>
-  <button class="ui positive right floated button" (click)="addArticle(newtitle,newlink)" [ngClass]="{disabled: !articleForm.valid}">
+  <button class="ui positive right floated button" type="submit" [disabled]="!articleForm.valid">
     Submit Link
   </button>
 </form>
